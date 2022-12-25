@@ -1,0 +1,13 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  /* overflow: hidden; */
+}
+.App {
+  text-align: center;
+}
+.allcontent{
+  min-height: calc(100vh - 22px);
+}
