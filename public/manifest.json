@@ -1,58 +1,58 @@
 {
-    "name": "CookWell",
-    "short_name": "CookWell",
-    "theme_color": "#fff",
-    "background_color": "#fff",
+    "name": "Cookwell",
+    "short_name": "Cookwell",
+    "theme_color": "#2dd29a",
+    "background_color": "#fafafa",
     "display": "standalone",
     "scope": "./",
     "start_url": "./",
     "icons": [
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject72.png",
         "sizes": "72x72",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject96.png",
         "sizes": "96x96",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject128.png",
         "sizes": "128x128",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject144.png",
         "sizes": "144x144",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject152.png",
         "sizes": "152x152",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject192.png",
         "sizes": "192x192",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject384.png",
         "sizes": "384x384",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       },
       {
-        "src": "./myproject.ico",
+        "src": "assets/Myproject512.png",
         "sizes": "512x512",
-        "type": "image/ico",
+        "type": "image/png",
         "purpose": "maskable any"
       }
     ]
