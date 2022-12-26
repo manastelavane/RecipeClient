@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState } from 'react';
 import { Routes, Route} from 'react-router-dom';
 
 import Home from './components/Home/Home';
@@ -14,13 +14,14 @@ import './App.css'
 
 import io from 'socket.io-client';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useSelector } from 'react-redux';
 
 
 const socket = io.connect('https://recipechatserver.onrender.com/'); 
 
 const App = () => {
-  
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const {authData} = useSelector((state) => state.auth);
+  console.log(authData)
   return (
       <GoogleOAuthProvider clientId='75616725572-dgct88mvnbm3g10q211jbjot4jq090kn.apps.googleusercontent.com'>
         <div className='allcontent'>
@@ -32,7 +33,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/new" element={<New />} />
             <Route path="/contribute" element={<Contribute />} />
-            <Route path='/chat' element={<Chat username={user?.result?.name} room={"JavaScript"} socket={socket} />}/>
+            <Route path='/chat' element={<Chat username={authData?.result?.name} room={"JavaScript"} socket={socket} />}/>
           </Routes>
         </div>
         <Footer/>
