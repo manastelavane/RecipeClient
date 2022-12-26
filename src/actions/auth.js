@@ -1,5 +1,6 @@
 import { AUTH,UPDATE,UPDATE_SUCCESS,AUTH_LOADING,SIGNUP_FAIL,SIGNIN_FAIL,G_SIGNIN_FAIL,CLEAR_ERRORS } from '../constants/actionTypes';
 import * as api from '../api/index.js';
+import jwt_decode from 'jwt-decode'
 
 //To signin a user
 export const signin = (formData, navigate) => async (dispatch) => {
@@ -28,10 +29,13 @@ export const signup = (formData, navigate) => async (dispatch) => {
 };
 
 //To googlesignin a user
-export const googlesignin = (result,token, navigate) => async (dispatch) => {
+export const googlesignin = (res,navigate) => async (dispatch) => {
   try {
     dispatch({type:AUTH_LOADING})
-    let formData={ firstName: result?.name, lastName: '', email: result?.email, password: '', confirmPassword: '',selectedFile: result?.imageUrl,googleId:result?.googleId }
+    const decoded=jwt_decode(res.credential);
+    const {name,picture,sub,email}=decoded;
+    // console.log(name,picture,sub,email)
+    let formData={ firstName: name, lastName: '', email: email, password: '', confirmPassword: '',selectedFile: picture,googleId:sub }
     const { data } = await api.googleSignUp(formData);
     dispatch({ type: AUTH, data });
     navigate('/');

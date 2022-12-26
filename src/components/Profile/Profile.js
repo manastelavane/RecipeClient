@@ -8,6 +8,7 @@ import FileBase from 'react-file-base64';
 import { updateProfile } from "../../actions/auth";
 import Input from "../Contribute/Input";
 import "./Profile.css";
+import * as actionType from '../../constants/actionTypes';
 
 import {
   Dialog,
@@ -18,6 +19,8 @@ import {
 } from "@material-ui/core";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import EditIcon from '@mui/icons-material/Edit';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const Profile = () => {
   const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -53,6 +56,12 @@ const Profile = () => {
     setOpen(!open)
   }
 
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+    navigate('/auth');
+    setUser(null);
+};
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -64,6 +73,7 @@ const Profile = () => {
         <IoArrowBackSharp/> 
         </div>
         <h1 style={{textShadow:'0.5px 0.5px black'}}>My Profile</h1>
+        <div>
         <div className="profileContainer">
           <div>
             <img src={user?.result?.selectedFile} alt={user?.result?.name} />
@@ -79,7 +89,11 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <Link className="link" onClick={dialogToggle}>Edit Profile</Link>
+        <div className="linkdiv">
+          <Link className="link" onClick={dialogToggle}>Edit &nbsp; <EditIcon fontSize="1.3vmax"/></Link>
+          <Link className="link" onClick={logout}>Log Out &nbsp; <ExitToAppIcon fontSize="1.3vmax"/></Link>
+        </div>
+        </div>
       </div>
       <div className="bordercontainer">
         <h1 className="border"></h1>

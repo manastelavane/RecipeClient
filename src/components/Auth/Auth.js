@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { SIGNUP_FAIL } from '../../constants/actionTypes';
 
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -14,7 +15,7 @@ import Icon from './icon';
 import Input from './Input';
 
 import {IoArrowBackSharp} from 'react-icons/io5'
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from '@react-oauth/google';
 import Loader from '../Loader/Loader';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '',selectedFile: '',googleId:'' };
@@ -40,17 +41,19 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(signup(form, navigate));
+      if(form.selectedFile===''){
+        dispatch({ type: SIGNUP_FAIL, payload: "Profile Image is required." });
+      }else{
+        dispatch(signup(form, navigate));
+      }
     } else {
       dispatch(signin(form, navigate));
     }
   };
 
   const googleSuccess =  (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
     try {
-      dispatch(googlesignin(result,token,navigate))
+      dispatch(googlesignin(res,navigate))
     } catch (error) {
       console.log(error);
     }
@@ -98,21 +101,15 @@ const SignUp = () => {
               <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
               <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
               { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
-              { isSignup && <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} /> }
+              { isSignup && <FileBase required type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} /> }
 
             </Grid>
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
               { isSignup ? 'Sign Up' : 'Sign In' }
             </Button>
             <GoogleLogin
-            clientId="564033717568-bu2nr1l9h31bhk9bff4pqbenvvoju3oq.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
             onSuccess={googleSuccess}
-            onFailure={googleError}
+            onError={googleError}
             cookiePolicy="single_host_origin"
             />
             <Grid container justifyContent="flex-end">

@@ -17,6 +17,7 @@ import Ingredients from './Ingredients';
 import Loader from '../Loader/Loader'
 import './Recipe.css'
 import VideoComponent from '../Video/VideoComponent';
+import EditIcon from '@mui/icons-material/Edit';
 
 const Recipe = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -157,13 +158,13 @@ const Recipe = () => {
                 <div className='header__text'>
                   {card?.Description}
                 </div>
-                <div className="tags">  
+                {/* <div className="tags">  
                   {
                     card?.Keywords.map((keyword)=>(
                       <span key={keyword}>{keyword}</span>
                     ))
                   }
-                </div>
+                </div> */}
               </div>
             </div>
             <div className='two-container-image'>
@@ -206,7 +207,7 @@ const Recipe = () => {
         </div>
         <div className='myreview-button'>
           <button onClick={submitCommentToggle} className="submitReview">
-            Your Comment
+            Write a Comment &nbsp;<EditIcon/>
           </button>
         </div>
         <h3 className="commentsHeading">Comments</h3>
@@ -225,6 +226,7 @@ const Recipe = () => {
             <textarea
             maxLength='250'
             className="submitDialogTextArea"
+            placeholder='Write your comment here..'
             cols="30"
             rows="5"
             value={curcomment}
@@ -251,7 +253,7 @@ const Recipe = () => {
               <p className="noComments">No Comments Yet</p>
         )}
         <div className='recommended'>
-          <Typography variant="h4">Recommendation :</Typography>
+          <Typography variant="h5">Recommendation :</Typography>
           <div className='card-container'>
             {
               isRecomendLoading?(<LoaderSmall/>):

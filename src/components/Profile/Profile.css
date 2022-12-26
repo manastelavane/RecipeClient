@@ -99,17 +99,28 @@ h1{
     width: 60%;
   }
   
+  .linkdiv{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
   .link{
+    /* display: inline; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background-color:#f94642 ;
-    font: 400 1.3vmax ;
+    font-weight: 400;
+    font-size: 1rem;
     color: white;
     text-decoration: none;
     padding: 0.8vmax;
     text-align: center;
     transition: all 0.5s;
-    margin: 1vmax 0;
-    width: 50vw;
+    margin: 1vmax;
+    width: 25vw;
+    border-radius: 10px;
   }
   
   .link:hover{
@@ -119,6 +130,9 @@ h1{
     margin: 10px;
   }
   @media screen and (max-width:900px) {
+    .link{
+      font-size: 1rem;
+    }
     .container{
       margin: 0;
       border-radius: 0;
@@ -147,4 +161,8 @@ h1{
     .profileContainer > div:last-child{
       padding: 1vmax;
     }
+    .link{
+      font-size: 0.8rem;
+    }
+
   }

@@ -13,13 +13,16 @@ import Chat from './components/chat/index';
 import './App.css'
 
 import io from 'socket.io-client';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const socket = io.connect('http://localhost:4000'); 
+
+const socket = io.connect('https://recipechatserver.onrender.com/'); 
 
 const App = () => {
+  
   const user = JSON.parse(localStorage.getItem('profile'));
   return (
-      <Fragment>
+      <GoogleOAuthProvider clientId='75616725572-dgct88mvnbm3g10q211jbjot4jq090kn.apps.googleusercontent.com'>
         <div className='allcontent'>
           <Routes>
             <Route path="/" exact element={<Home/>} />
@@ -33,7 +36,7 @@ const App = () => {
           </Routes>
         </div>
         <Footer/>
-      </Fragment>
+      </GoogleOAuthProvider>
   );
 };
 

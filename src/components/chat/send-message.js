@@ -14,7 +14,11 @@ const SendMessage = ({ socket, username, room }) => {
       setMessage('');
     }
   };
-
+  const handleKeyPress=(e)=>{
+    if(e.key=='Enter'){
+      sendMessage()
+    }
+  }
   return (
     <div className={styles.sendMessageContainer}>
       <input
@@ -22,6 +26,7 @@ const SendMessage = ({ socket, username, room }) => {
         placeholder='Message...'
         onChange={(e) => setMessage(e.target.value)}
         value={message}
+        onKeyPress={(e) => handleKeyPress(e)}
       />
       <button className={styles.btn} onClick={sendMessage}>
         <span className={styles.sendtext}>Send Message</span>

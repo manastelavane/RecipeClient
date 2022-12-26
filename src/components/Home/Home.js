@@ -1,6 +1,7 @@
 import React ,{useState,useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { Link, useNavigate,useLocation } from 'react-router-dom';
+// import { GoogleLogin } from '@react-oauth/google';
 
 import { getCards } from '../../actions/cards'
 import Autocompletee from './Autocomplete/Autocomplete';
@@ -13,6 +14,8 @@ import './HomeStyles.css'
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import {TextField,Autocomplete} from '@mui/material';
 import Loader from '../Loader/Loader';
+import OneTap from './OneTap';
+
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -24,6 +27,7 @@ const Home = () => {
   const page = query.get('page') || 1;
 
   const {isLoading,cards,numberOfPages} = useSelector((state) => state.cards);
+  const {loading,isAuthenticated} = useSelector((state) => state.auth);
 
   const [inputValue, setInputValue] = useState(options[0]);
   const [category, setCategory] = useState('All');
@@ -52,7 +56,8 @@ const Home = () => {
       });
     }  
   },[page])
-  if(isLoading){
+  
+  if(isLoading || loading){
     return(
       <>
         <Loader/>
@@ -63,6 +68,7 @@ const Home = () => {
     <>
       <Navbar/>
       <div className='home'>
+        {!isAuthenticated?<OneTap/>:<></>}
         <div className='hero'>
           <div className='hero-content'>
             <h3 style={{textShadow:"2px 1px black"}}>Explore over <b style={{textShadow:"1px 1px black"}}>150,000+</b> Best Recipes over the world.</h3>
