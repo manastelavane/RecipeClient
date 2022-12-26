@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {Alert} from '@mui/material'
+import { useAlert } from "react-alert";
 
-import { signin, signup,googlesignin } from '../../actions/auth';
+import { signin, signup,googlesignin,clearErrors } from '../../actions/auth';
 import useStyles from './AuthStyles';
 import FileBase from 'react-file-base64';
 import Icon from './icon';
@@ -13,10 +15,13 @@ import Input from './Input';
 
 import {IoArrowBackSharp} from 'react-icons/io5'
 import { GoogleLogin } from 'react-google-login';
+import Loader from '../Loader/Loader';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '',selectedFile: '',googleId:'' };
 
 const SignUp = () => {
+  
+  const {loading,isAuthenticated,error} = useSelector((state) => state.auth);
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -55,8 +60,24 @@ const SignUp = () => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  useEffect(()=>{
+    if(error){
+      // dispatch(clearErrors());
+    }
+    if(isAuthenticated){
+      navigate(-1)
+    }
+  },[dispatch,isAuthenticated,alert])
+  if(loading){
+    return (
+      <>
+      <Loader/>
+      </>
+    )
+  }
   return (
     <div className={classes.divcontainer}>
+      {error?<><Alert severity="error" className="alert">{error}</Alert></>:<></>}
       <div className={classes.back} title="Back" onClick={()=>navigate('/')}>
         <IoArrowBackSharp/> 
       </div>

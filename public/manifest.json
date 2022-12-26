@@ -1,0 +1,59 @@
+{
+    "name": "CookWell",
+    "short_name": "CookWell",
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "scope": "./",
+    "start_url": "./",
+    "icons": [
+      {
+        "src": "./myproject.ico",
+        "sizes": "72x72",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "96x96",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "128x128",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "144x144",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "152x152",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "192x192",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "384x384",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "./myproject.ico",
+        "sizes": "512x512",
+        "type": "image/ico",
+        "purpose": "maskable any"
+      }
+    ]
+  }

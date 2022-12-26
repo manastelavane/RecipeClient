@@ -11,3 +11,10 @@
 .allcontent{
   min-height: calc(100vh - 22px);
 }
+.alert{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+}

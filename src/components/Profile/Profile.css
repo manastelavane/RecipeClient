@@ -135,6 +135,9 @@ h1{
     }
   }
   @media screen and (max-width:400px) {
+    .container{
+      justify-content: flex-start;
+    }
     .profileContainer > div{
       margin: 0;
     }

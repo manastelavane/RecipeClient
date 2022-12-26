@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+
 import { reducers } from './reducers';
 const store = configureStore({reducer:reducers}, compose(applyMiddleware(thunk)));
 const container = document.getElementById('root');

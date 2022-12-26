@@ -19,3 +19,8 @@ export const START_RECOMMEND_LOADING='START_RECOMMEND_LOADING'
 //user auth related constants
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+export const AUTH_LOADING='AUTH_LOADING';
+export const G_SIGNIN_FAIL='G_SIGNIN_FAIL';
+export const SIGNUP_FAIL='G_SIGNUP_FAIL';
+export const SIGNIN_FAIL='SIGNIN_FAIL';
+export const CLEAR_ERRORS='CLEAR_ERRORS';
