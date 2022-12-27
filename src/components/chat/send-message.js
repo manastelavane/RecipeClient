@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 
 import { IoMdSend } from 'react-icons/io';
+import { HiUserGroup } from 'react-icons/hi';
+import { BiExit } from 'react-icons/bi';
+import RoomAndUsers from './room-and-user';
+
 
 const SendMessage = ({ socket, username, room }) => {
   const [message, setMessage] = useState('');
@@ -28,10 +32,10 @@ const SendMessage = ({ socket, username, room }) => {
         value={message}
         onKeyPress={(e) => handleKeyPress(e)}
       />
-      <button className={styles.btn} onClick={sendMessage}>
-        <span className={styles.sendtext}>Send Message</span>
+      <button className={styles.btn} onClick={sendMessage} title='Send Message'>
         <span className={styles.sendbutton}><IoMdSend/></span>
       </button>
+      <RoomAndUsers socket={socket} username={username} room={room}/>
     </div>
   );
 };

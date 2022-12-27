@@ -6,6 +6,7 @@ import SendMessage from './send-message';
 
 import { IoArrowBackSharp } from "react-icons/io5";
 import styles from './styles.module.css';
+import RoomAndUsers from './room-and-user';
 
 const Chat = ({ username, room, socket }) => {
   const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -30,6 +31,7 @@ const Chat = ({ username, room, socket }) => {
       <div className={styles.innerContainer}>
         <MessagesReceived socket={socket} username={username} />
         <SendMessage socket={socket} username={username} room={room} />
+        {/* <RoomAndUsers socket={socket} username={username} room={room}/> */}
       </div>
     </div>
   );

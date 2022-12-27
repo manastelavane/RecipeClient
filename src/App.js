@@ -18,6 +18,7 @@ import { useSelector } from 'react-redux';
 
 
 const socket = io.connect('https://recipechatserver.onrender.com/'); 
+// const socket = io.connect('https://recipechatserver.onrender.com/'); 
 
 const App = () => {
   const {authData} = useSelector((state) => state.auth);
