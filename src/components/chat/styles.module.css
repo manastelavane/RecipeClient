@@ -141,4 +141,8 @@
       padding: 7px ;
       width: 80%;
   }
+  .sendMessageContainer {
+    padding:25px 1px 25px 8px;
+    /* padding: 25px 8px; */
+  }
 }

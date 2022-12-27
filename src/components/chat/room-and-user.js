@@ -16,15 +16,15 @@ const RoomAndUsers = ({ socket, username, room }) => {
         bottom: false
       });
   const [roomUsers, setRoomUsers] = useState([]);
-  console.log("tr",typeof(roomUsers))
-console.log("r",roomUsers)
+//   console.log("tr",typeof(roomUsers))
+// console.log("r",roomUsers)
   const navigate = useNavigate();
 
   useEffect(() => {
     socket.on('chatroom_users', (data) => {
         data=[{id:"CookWell",username:'CookWell Bot',room:'JavaScript'},...data]
-        console.log("td",typeof(data));
-        console.log("d",data);
+        // console.log("td",typeof(data));
+        // console.log("d",data);
       setRoomUsers(data);
     });
 

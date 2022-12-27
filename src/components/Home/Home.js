@@ -13,6 +13,7 @@ import './HomeStyles.css'
 
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import {TextField,Autocomplete} from '@mui/material';
+import {AiFillCaretDown} from 'react-icons/ai'
 import Loader from '../Loader/Loader';
 import OneTap from './OneTap';
 
@@ -36,17 +37,8 @@ const Home = () => {
   const navigate=useNavigate()
   
   useEffect(() => {
-    dispatch(getCards(category,page));
-  }, [ dispatch,page]);
-  useEffect(()=>{
-    dispatch(getCards(category,1))
-  },[])
-  useEffect(() => {
-    dispatch(getCards(category,1))
-    navigate(`/card?category=${category}&page=1`);
-  }, [ dispatch,category,navigate]);
-  useEffect(()=>{
-    console.log(category,page,typeof(category),typeof(page))
+    dispatch(getCards(category,page))
+    navigate(`/card?category=${category}&page=${page}`);
     if(page==="1" && category==="All"){
       window.scrollTo(0, 0)
     }else{
@@ -55,7 +47,8 @@ const Home = () => {
         block: 'start',
       });
     }  
-  },[page])
+    console.log("hello")
+  }, [ dispatch,category,page,navigate]);
   
   if(isLoading || loading){
     return(
@@ -77,16 +70,21 @@ const Home = () => {
             <br/>
             <h6 style={{textShadow:"2px 1px black",textAlign:"center"}}>Can't think of any Recipe? <span className='lightfont'>Try out this Popular tags.</span></h6>
             <div className="tags">
-              <span onClick={()=>setCategory('Dessert')}>Dessert</span>
-              <span onClick={()=>setCategory('< 60 Mins')}>Quick & Easy</span>
+              {/* <span onClick={()=>setCategory('Dessert')}>Dessert</span> */}
               <span onClick={()=>setCategory('Lunch/Snacks')}>Lunch/Snacks</span>
+              <span onClick={()=>setCategory('< 60 Mins')}>Quick & Easy</span>
               <span onClick={()=>setCategory('Chicken')}>Chicken</span>
             </div>
+            <a href="#containerscroll"><div className='scrolldiv'>
+            <button className='scroll-button'>Scroll &nbsp;<AiFillCaretDown/></button>
+            </div></a>
           </div>
         </div>
+          <div id='containerscroll'></div>
         <br/>
-        <div className="autocomplete-div" ref={ref}>
+        <div className="autocomplete-div" ref={ref} >
           <Autocomplete
+            
             className='autocomplete'
             value={category}
             onChange={(event, newCategory) => {
