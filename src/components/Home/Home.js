@@ -47,7 +47,7 @@ const Home = () => {
         block: 'start',
       });
     }  
-    console.log("hello")
+    // console.log("hello")
   }, [ dispatch,category,page,navigate]);
   
   if(isLoading || loading){

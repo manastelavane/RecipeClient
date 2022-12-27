@@ -53,7 +53,7 @@ const New = () => {
               size='small'
               color="primary"
               renderItem={(item) => (
-                <PaginationItem {...item} component={Link} to={`/card/new?page=${item.page}`} />
+                <PaginationItem {...item} component={Link} to={`/new?page=${item.page}`} />
               )}
             />
           </div>
