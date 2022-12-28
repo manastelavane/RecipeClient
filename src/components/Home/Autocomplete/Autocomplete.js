@@ -3,10 +3,13 @@ import Autocompletee from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import axios from 'axios'
 import '../HomeStyles.css'
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+
 const Autocomplete = () => {
 	const [searchResults, setSearchResults] = useState([])
+  const [query,setQuery]=useState('');
     const onChangeone=async(e)=>{
+        setQuery(e.target.value)
         if(e.target.value){
             const url = 'https://recipenewserver1.onrender.com/card/autocompletesearch'
             const { data } = await axios.get(url, {
@@ -18,7 +21,14 @@ const Autocomplete = () => {
         }
     }
    const navigate=useNavigate()
-      
+
+  const navigateOnChange=(e,value)=>{
+    if(e.key==='Enter'){
+      navigate(`/relatedrecipe?query=${query}`);
+    }else{
+      navigate(`/recipe/${value?._id}`);
+    }
+  }
   return (
     <>
     <Autocompletee
@@ -31,20 +41,20 @@ const Autocomplete = () => {
               },
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: 'black',
+                  border: 'none',
                 },
                 '&:hover fieldset': {
-                  borderColor: 'black',
+                  border: 'none',
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: 'black',
+                  border: 'none',
                 },
               },
         }}
         className='autocompletee'
         freeSolo
         filterOptions={(x)=>x}
-        onChange={(e,value)=>navigate(`/recipe/${value?._id}`)}
+        onChange={(e,value)=>navigateOnChange(e,value)}
         options={searchResults}
         getOptionLabel={(option) => option.Name}
         renderInput={(params) => <TextField {...params} hiddenLabel placeholder='Search Recipe...' variant="outlined" className='autocomplete-text' onChange={(e)=>onChangeone(e)}  />}

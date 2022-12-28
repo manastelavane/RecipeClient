@@ -1,8 +1,8 @@
-.new-hero{
+.related-hero{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../images/fingerchips-big.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../images/Healthy_Food_Spread.jpg");
     height: 62vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@
     position: relative;
   
 }
-.new-hero-content{
+.related-hero-content{
     font-size: 4.5rem;
     font-weight: 900;
     color: white;
@@ -19,8 +19,18 @@
     font-family: 'Ubuntu', sans-serif;
     text-shadow: 1px 2px black;
 }
+.recipe-container{
+    display: flex!important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0!important;
+}
 @media screen and (max-width:700px) {
-    .new-hero-content{
-        font-size: 2.4rem;
+    .related-hero-content{
+        font-size: 3rem;
+    }
+    .related-hero-content{
+        font-size: 1.5rem;
     }
 }

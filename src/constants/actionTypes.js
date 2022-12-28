@@ -15,6 +15,7 @@ export const NEW_COMMENT_SUCCESS='NEW_COMMENT_SUCCESS'
 export const NEW_COMMENT_FAIL='NEW_COMMENT_FAIL'
 export const FETCH_NEW_ALL='FETCH_NEW_ALL'
 export const START_RECOMMEND_LOADING='START_RECOMMEND_LOADING'
+export const FETCH_RELATED_ALL='FETCH_RELATED_ALL'
 
 //user auth related constants
 export const AUTH = 'AUTH';

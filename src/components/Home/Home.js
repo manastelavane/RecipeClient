@@ -10,13 +10,12 @@ import LoaderSmall from '../Loader/LoaderSmall';
 import Navbar from '../Navbar/Navbar'
 import { options } from '../options';
 import './HomeStyles.css'
+import Loader from '../Loader/Loader';
+import OneTap from './OneTap';
 
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import {TextField,Autocomplete} from '@mui/material';
 import {AiFillCaretDown} from 'react-icons/ai'
-import Loader from '../Loader/Loader';
-import OneTap from './OneTap';
-
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -37,19 +36,27 @@ const Home = () => {
   const navigate=useNavigate()
   
   useEffect(() => {
-    dispatch(getCards(category,page))
-    navigate(`/card?category=${category}&page=${page}`);
+    // console.log("category")
+    dispatch(getCards(category,1))
+    navigate(`/card?category=${category}&page=1`);
     if(page==="1" && category==="All"){
       window.scrollTo(0, 0)
     }else{
-      ref.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      // console.log("scroll")
+      window.scrollTo(0, 500)
     }  
-    // console.log("hello")
-  }, [ dispatch,category,page,navigate]);
-  
+  }, [dispatch,category,navigate]);
+  useEffect(() => {
+    // console.log("page")
+    if(page==="1" && category==="All"){
+      window.scrollTo(0, 0)
+    }else{
+      // console.log("scroll")
+      window.scrollTo(0, 500)
+    }  
+    dispatch(getCards(category,page))
+    navigate(`/card?category=${category}&page=${page}`);
+  }, [dispatch,page,navigate]);
   if(isLoading || loading){
     return(
       <>
@@ -80,9 +87,9 @@ const Home = () => {
             </div></a>
           </div>
         </div>
-          <div id='containerscroll'></div>
+          <div id='containerscroll' ref={ref}></div>
         <br/>
-        <div className="autocomplete-div" ref={ref} >
+        <div className="autocomplete-div" >
           <Autocomplete
             
             className='autocomplete'

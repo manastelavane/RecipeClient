@@ -1,10 +1,9 @@
 
 import styles from './styles.module.css';
-import React,{ useState, useEffect, Fragment } from 'react';
+import React,{ useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import ListItem from '@mui/material/ListItem';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -23,8 +22,6 @@ const RoomAndUsers = ({ socket, username, room }) => {
   useEffect(() => {
     socket.on('chatroom_users', (data) => {
         data=[{id:"CookWell",username:'CookWell Bot',room:'JavaScript'},...data]
-        // console.log("td",typeof(data));
-        // console.log("d",data);
       setRoomUsers(data);
     });
 

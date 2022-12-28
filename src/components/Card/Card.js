@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Rating,CardActionArea,Typography,CardMedia,CardContent,Card } from '@mui/material';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import {BiTimer} from 'react-icons/bi'
 import {FaFireAlt} from 'react-icons/fa'
@@ -13,10 +14,10 @@ export default function ActionAreaCard({card}) {
     <Link className='recipecard' to={`/recipe/${card._id}`}>
       <Card className="card">
         <CardActionArea>
-          <CardMedia className='card-media'
-            component="img"
+          <LazyLoadImage className='card-media'
+            // component="LazyLoadImage"
             height="200"
-            image={card.Images[0]}
+            src={card.Images[0]}
             alt="green iguana"
           />
           <CardContent>

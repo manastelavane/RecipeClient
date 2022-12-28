@@ -185,6 +185,10 @@
     .logo{
         font-size: 1.5rem;
     }
+    .userName{
+        color: black!important;
+        font-weight: 900!important;
+    }
 }
 @media screen and (max-width:600px){
     .logo{

@@ -22,8 +22,13 @@ const New = () => {
     const {isLoading,neww,newnumberOfPages} = useSelector((state) => state.cards);
     useEffect(()=>{
         dispatch(getNewCards(page))
-        navigate(`/new?page=1`);
-    },[dispatch,navigate])
+        navigate(`/new?page=${page}`);
+        if(page!==1){
+          window.scrollTo(0, 300)
+        }else{
+          window.scrollTo(0, 0)
+        }
+    },[dispatch,navigate,page])
     useEffect(() => {
       window.scrollTo(0, 0)
     }, [])

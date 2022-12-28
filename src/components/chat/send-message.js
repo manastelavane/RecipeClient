@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 
 import { IoMdSend } from 'react-icons/io';
-import { HiUserGroup } from 'react-icons/hi';
-import { BiExit } from 'react-icons/bi';
 import RoomAndUsers from './room-and-user';
 
 
@@ -19,7 +17,7 @@ const SendMessage = ({ socket, username, room }) => {
     }
   };
   const handleKeyPress=(e)=>{
-    if(e.key=='Enter'){
+    if(e.key==='Enter'){
       sendMessage()
     }
   }

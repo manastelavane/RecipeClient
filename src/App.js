@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Contribute from './components/Contribute/Contribute';
 import New from './components/New/New';
 import Chat from './components/chat/index';
+import RelatedRecipe from './components/RelatedRecipe/RelatedRecipe';
 
 import './App.css'
 
@@ -22,7 +23,7 @@ const socket = io.connect('https://recipechatserver.onrender.com/');
 
 const App = () => {
   const {authData} = useSelector((state) => state.auth);
-  console.log(authData)
+  // console.log(authData)
   return (
       <GoogleOAuthProvider clientId='75616725572-dgct88mvnbm3g10q211jbjot4jq090kn.apps.googleusercontent.com'>
         <div className='allcontent'>
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/" exact element={<Home/>} />
             <Route path="/card" exact element={<Home/>} />
             <Route path="/auth" exact element={<Auth />} />
+            <Route path="/relatedrecipe" exact element={<RelatedRecipe />} />
             <Route path="/recipe/:id" element={<Recipe />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/new" element={<New />} />

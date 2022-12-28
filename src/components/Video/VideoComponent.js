@@ -7,7 +7,7 @@ import './VideoItem.css'
 
 const VideoComponent = () => {
     const { card,isLoading} = useSelector((state) => state.cards);
-    console.log("hello")
+    // console.log("hello")
     const [selectedVideo,setSelectedVideo]=useState(null)
   const [videos,search]=useVideos('')
   useEffect(()=>{

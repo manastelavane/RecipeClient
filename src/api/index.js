@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://recipenewserver1.onrender.com/' });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -12,6 +12,7 @@ API.interceptors.request.use((req) => {
 //recipes related api calls
 export const fetchCards = (category,page) => API.get(`/card?category=${category}&page=${page}`);
 export const fetchNewCards = (page) => API.get(`/card/new?page=${page}`);
+export const fetchRelatedCards = (query) => API.get(`/card/related?query=${query}`);
 export const fetchCard = (id) => API.get(`/card/${id}`);
 export const postComment = (reviewData,config) => API.put(`/card/review`,reviewData,config);
 export const getRecommendSearch = (searchQuery) => API.get(`/card/recomendsearch?Keywords=${searchQuery.Keywords}&category=${searchQuery.category}`);

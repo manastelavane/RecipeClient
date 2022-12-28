@@ -1,4 +1,4 @@
-import { FETCH_ALL,FETCH_CARD,FETCH_NEW_ALL,START_LOADING,START_RECOMMEND_LOADING,END_LOADING,NEW_COMMENT_REQUEST,NEW_COMMENT_SUCCESS,FETCH_BY_SEARCH, CREATE} from '../constants/actionTypes';
+import { FETCH_ALL,FETCH_CARD,FETCH_NEW_ALL,START_LOADING,START_RECOMMEND_LOADING,END_LOADING,NEW_COMMENT_REQUEST,NEW_COMMENT_SUCCESS,FETCH_BY_SEARCH, CREATE, FETCH_RELATED_ALL} from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 //For Home page - to get all recipe cards
@@ -19,6 +19,17 @@ export const getNewCards = (page) => async (dispatch) => {
     dispatch({ type: START_LOADING });
     const { data :{data,currentPage, numberOfPages}} = await api.fetchNewCards(page);
     dispatch({ type: FETCH_NEW_ALL, payload:{data ,currentPage, numberOfPages}});
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRelatedCards = (query) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data :{data}} = await api.fetchRelatedCards(query);
+    dispatch({ type: FETCH_RELATED_ALL, payload:{data}});
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
