@@ -64,12 +64,10 @@ const SignUp = () => {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   useEffect(()=>{
-    if(error){
-      // dispatch(clearErrors());
-    }
     if(isAuthenticated){
       navigate(-1)
     }
+    window.scrollTo(0, 0)
   },[dispatch,isAuthenticated,alert])
   if(loading){
     return (

@@ -64,4 +64,8 @@ iframe{
 .segment{
     font-size: 0.7rem;
 }
+.video-item img{
+    max-width: 20vw;
+    max-height: 20vw;
+}
 }
