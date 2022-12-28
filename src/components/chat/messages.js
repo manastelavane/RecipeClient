@@ -56,26 +56,26 @@ const Messages = ({ socket , username}) => {
       {messagesRecieved.map((msg, i) => 
         (msg.username==="ChatBot" || msg.username===undefined)?(
           <>
-            <div className={styles.messagecontainer3}>
-              <div className={styles.message3} key={i}>
+            <div className={styles.messagecontainer3} key={i}>
+              <div className={styles.message3} >
                 <p className={styles.msgText}>{msg.message}</p>
               </div>
             </div>
           </>
         ):
         username===msg.username?(
-          <div className={styles.messagecontainer1}>
+          <div className={styles.messagecontainer1} key={i}>
             <div className={styles.msgMeta2}>
                 {formatDateFromTimestamp(msg.__createdtime__)}
             </div>
-            <div className={styles.message1} key={i}>
+            <div className={styles.message1} >
               <span className={styles.msgMeta1}>{msg.username}</span>
               <p className={styles.msgText}>{msg.message}</p>
             </div>
           </div>
         ):(
-          <div className={styles.messagecontainer2}>
-            <div className={styles.message2} key={i}>
+          <div className={styles.messagecontainer2} key={i}>
+            <div className={styles.message2} >
               <span className={styles.msgMeta1}>{msg.username}</span>
               <p className={styles.msgText}>{msg.message}</p>
             </div>

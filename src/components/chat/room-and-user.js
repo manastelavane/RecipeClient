@@ -12,7 +12,7 @@ import { BiExit } from 'react-icons/bi';
 
 const RoomAndUsers = ({ socket, username, room }) => {
     const [state, setState] = React.useState({
-        bottom: false
+        left: false
       });
   const [roomUsers, setRoomUsers] = useState([]);
 //   console.log("tr",typeof(roomUsers))
@@ -43,17 +43,17 @@ const RoomAndUsers = ({ socket, username, room }) => {
   };
   const list = (anchor) => (
     <Box
-      sx={{ width: 'auto' }}
+      sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      {roomUsers.map((user) => (
+      {roomUsers.map((user,index) => (
             <ListItem style={{
                 fontWeight: `${(user.username === username ||user.username === 'CookWell Bot') ? 'bold' : 'normal'}`,
                 color: `${(user.username === 'CookWell Bot') ? 'rgb(0, 24, 111)' : 'black'}`,
-              }}>
+              }} key={index}>
                 <span className={styles.circle} ></span>
               {user.username}
             </ListItem>
@@ -65,7 +65,7 @@ const RoomAndUsers = ({ socket, username, room }) => {
 
   return (
     <>
-        {['bottom'].map((anchor) => (
+        {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <button className={styles.btn} onClick={toggleDrawer(anchor, true)} title='Online Participants'>
                 <span className={styles.sendbutton}><HiUserGroup/></span>
