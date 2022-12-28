@@ -22,6 +22,9 @@ function useQuery() {
 }
 
 const Home = () => {
+  const user=JSON.parse(localStorage.getItem('profile'));
+  console.log("user",user)
+
   const query = useQuery();
   const ref = React.createRef();
   const page = query.get('page') || 1;
@@ -34,7 +37,6 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const navigate=useNavigate()
-  
   useEffect(() => {
     // console.log("category")
     dispatch(getCards(category,1))
@@ -68,7 +70,7 @@ const Home = () => {
     <>
       <Navbar/>
       <div className='home'>
-        {!isAuthenticated?<OneTap/>:<></>}
+        {user===null?<OneTap />:<></>}
         <div className='hero'>
           <div className='hero-content'>
             <h3 style={{textShadow:"2px 1px black"}}>Explore over <b style={{textShadow:"1px 1px black"}}>150,000+</b> Best Recipes over the world.</h3>

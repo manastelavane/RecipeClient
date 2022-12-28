@@ -8,8 +8,9 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import styles from './styles.module.css';
 import RoomAndUsers from './room-and-user';
 
-const Chat = ({ username, room, socket }) => {
+const Chat = ({ room, socket }) => {
   const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const username=user?.result?.name;
   const navigate=useNavigate()
     useEffect(()=>{
       if(!user){

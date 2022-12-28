@@ -73,6 +73,10 @@ span>.MuiFormControl-root{
 .textfield .MuiFormControl-root{
     margin: 0!important;
 }
+.ingdiv{
+    display: flex;
+    flex-direction: column;
+}
 @media screen and (max-width:700px) {
     .contribute-hero-content{
         font-size: 3rem;

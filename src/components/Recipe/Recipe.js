@@ -22,7 +22,8 @@ import EditIcon from '@mui/icons-material/Edit';
 const Recipe = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const { card,isLoading,isRecomendLoading,recommend} = useSelector((state) => state.cards);
-  const { success, error: reviewError } = useSelector((state) => state.newCommentReducer);
+  // console.log(card)
+  // const { success, error: reviewError } = useSelector((state) => state.newCommentReducer);
   const [curcomment,setCurcomment]=useState('')
   const [rating,setRating]=useState(0)
   const [open, setOpen] = useState(false);
@@ -37,7 +38,7 @@ const Recipe = () => {
   },[user])
   useEffect(() => {
     dispatch(getCard(id));
-  }, [id,dispatch,success,reviewError]);
+  }, [id,dispatch]);
 
   useEffect(() => {
     if(card){
@@ -53,12 +54,13 @@ const Recipe = () => {
     myForm.set("UserId", user?.result?._id);
     myForm.set("UserName", user?.result?.name);
     dispatch(newComment(myForm));
+    // dispatch(getCard(id))
     setOpen(false);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+  }, [id])
 
   if (isLoading) {
     return (

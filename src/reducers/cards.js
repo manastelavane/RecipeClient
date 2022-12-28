@@ -32,35 +32,29 @@ export const cards=(state = {isLoading:false,isRecomendLoading:true,cards:[],rec
     case CREATE:
         console.log("created",action.data)
         return {...state,isLoading: false}
-        
-    default:
-      return state;
-  }
-};
-
-
-export const newCommentReducer = (state = {}, action) => {
-  switch (action.type) {
     case NEW_COMMENT_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
-
-    case NEW_COMMENT_SUCCESS:
-      return {
-        loading: false,
-        success: action.payload,
-      };
-      
-    case NEW_COMMENT_FAIL:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    
+        return {
+            ...state,
+            loading: true,
+        };
+        case NEW_COMMENT_SUCCESS:
+          console.log(action.payload)
+          return {
+            ...state,
+            loading: false,
+            card: action.payload,
+          };
+          
+        case NEW_COMMENT_FAIL:
+          return {
+            ...state,
+            loading: false,
+            error: action.payload,
+          };
     default:
       return state;
   }
 };
+
+
+

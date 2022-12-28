@@ -22,7 +22,7 @@ const socket = io.connect('https://recipechatserver.onrender.com/');
 // const socket = io.connect('https://recipechatserver.onrender.com/'); 
 
 const App = () => {
-  const {authData} = useSelector((state) => state.auth);
+  // const {authData} = useSelector((state) => state.auth);
   // console.log(authData)
   return (
       <GoogleOAuthProvider clientId='75616725572-dgct88mvnbm3g10q211jbjot4jq090kn.apps.googleusercontent.com'>
@@ -36,7 +36,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/new" element={<New />} />
             <Route path="/contribute" element={<Contribute />} />
-            <Route path='/chat' element={<Chat username={authData?.result?.name} room={"JavaScript"} socket={socket} />}/>
+            <Route path='/chat' element={<Chat room={"JavaScript"} socket={socket} />}/>
           </Routes>
         </div>
         <Footer/>

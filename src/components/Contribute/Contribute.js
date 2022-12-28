@@ -171,6 +171,7 @@ const Contribute = () => {
                       />
                     </div>
                   </div>
+                  <div className='ingdiv'>
                   <h4>Ingredients : </h4><br/>
                   <h5 style={{fontWeight:'500'}}>Eg."500 gm flour" will be inputed as: Amount:500, Ingredient:g flour</h5>
                   <br/> 
@@ -191,7 +192,9 @@ const Contribute = () => {
                         Remove Ingredient -
                       </Button>
                     </Stack>
+                    </div>
                     <br/>
+                    <div className='ingdiv'>
                     <h4>Steps : </h4>
                     <br/>
                     <Grid container columnSpacing={2} alignItems="center">
@@ -213,6 +216,7 @@ const Contribute = () => {
                         Remove Step -
                       </Button>
                     </Stack>
+                    </div>
                 </Grid>
                 <br/>
                 <br/>

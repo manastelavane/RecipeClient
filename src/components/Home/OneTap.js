@@ -11,6 +11,7 @@ const OneTap = () => {
         onSuccess: res => {
           try {
             dispatch(googlesignin(res,navigate))
+            // setUser(JSON.parse(localStorage.getItem('profile')))
           } catch (error) {
             console.log(error);
           }
