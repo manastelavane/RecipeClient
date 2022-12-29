@@ -33,4 +33,7 @@
     .related-hero-content{
         font-size: 1.5rem;
     }
+    .related-hero{
+        height: 40vh;
+    }
 }

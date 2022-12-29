@@ -58,7 +58,7 @@ const Autocomplete = () => {
         onChange={(e,value)=>navigateOnChange(e,value)}
         options={searchResults}
         getOptionLabel={(option) => option.Name}
-        renderInput={(params) => <TextField {...params} hiddenLabel placeholder='Search Recipe...' variant="outlined" className='autocomplete-text' onChange={(e)=>onChangeone(e)}  />}
+        renderInput={(params) => <TextField {...params} hiddenLabel type="search" placeholder='Search Recipe...' variant="outlined" className='autocomplete-text' onChange={(e)=>onChangeone(e)}  />}
       />
     </>
   )

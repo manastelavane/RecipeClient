@@ -50,7 +50,7 @@ const RoomAndUsers = ({ socket, username, room }) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <div style={{margin:'3px'}}>
-      <Typography variant="h6" noWrap component="div">&nbsp;<HiUserGroup/> &nbsp;Online Participants</Typography>
+      <Typography variant="h6" noWrap component="div" style={{fontWeight:'900'}}>&nbsp;<HiUserGroup/> &nbsp;Online Participants</Typography>
       </div>
       <Divider />
       <List>

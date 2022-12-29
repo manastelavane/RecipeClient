@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getRelatedCards } from '../../actions/cards';
 import ActionAreaCard from '../Card/Card';
 import Loader from '../Loader/Loader';
@@ -11,9 +11,16 @@ function useQuery() {
 }
 
 const RelatedRecipe = () => {
+  const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const navigate=useNavigate()
     const query=useQuery()
     const dispatch=useDispatch()
     const {isLoading,relatedrecipe} = useSelector((state) => state.cards);
+    useEffect(() => {
+        if (!user) {
+          navigate('/auth');
+        }
+      }, [navigate, user]);
     useEffect(()=>{
         dispatch(getRelatedCards(query.get('query')));
     },[])
