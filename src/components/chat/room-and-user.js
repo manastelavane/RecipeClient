@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { HiUserGroup } from 'react-icons/hi';
 import { BiExit } from 'react-icons/bi';
+import { Divider, Typography } from '@mui/material';
 
 const RoomAndUsers = ({ socket, username, room }) => {
     const [state, setState] = React.useState({
@@ -48,6 +49,10 @@ const RoomAndUsers = ({ socket, username, room }) => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <div style={{margin:'3px'}}>
+      <Typography variant="h6" noWrap component="div">&nbsp;<HiUserGroup/> &nbsp;Online Participants</Typography>
+      </div>
+      <Divider />
       <List>
       {roomUsers.map((user,index) => (
             <ListItem style={{
