@@ -23,7 +23,8 @@ const Autocomplete = () => {
    const navigate=useNavigate()
 
   const navigateOnChange=(e,value)=>{
-    if(e.key==='Enter'){
+    var keyCode = e.keyCode || e.which; 
+    if(keyCode === 13){
       navigate(`/relatedrecipe?query=${query}`);
     }else{
       navigate(`/recipe/${value?._id}`);
