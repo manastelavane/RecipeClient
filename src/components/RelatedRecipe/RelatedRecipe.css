@@ -27,9 +27,7 @@
     margin: 0!important;
 }
 @media screen and (max-width:700px) {
-    .related-hero-content{
-        font-size: 3rem;
-    }
+
     .related-hero-content{
         font-size: 1.5rem;
     }
