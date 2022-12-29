@@ -78,6 +78,9 @@ span>.MuiFormControl-root{
     flex-direction: column;
 }
 @media screen and (max-width:700px) {
+    .contribute-hero{
+        height: 40vh;
+    }
     .contribute-hero-content{
         font-size: 3rem;
     }

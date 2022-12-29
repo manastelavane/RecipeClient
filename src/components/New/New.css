@@ -23,4 +23,7 @@
     .new-hero-content{
         font-size: 2.4rem;
     }
+    .new-hero{
+        height: 40vh;
+    }
 }
