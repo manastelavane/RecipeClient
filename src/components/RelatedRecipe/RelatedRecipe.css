@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../images/Healthy_Food_Spread.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://raw.githubusercontent.com/manastelavane/RecipeImages/main/Healthy_Food_Spread.jpg");
     height: 62vh;
     background-position: center;
     background-repeat: no-repeat;

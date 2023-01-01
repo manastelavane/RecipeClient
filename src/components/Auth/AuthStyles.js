@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import image from '../../images/image2.jpeg'
 export default makeStyles((theme) => ({
   container:{
     
@@ -12,7 +11,7 @@ export default makeStyles((theme) => ({
     },
   },
   divcontainer:{
-    backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.1)), url(${image})`,
+    backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.1)), url(https://raw.githubusercontent.com/manastelavane/RecipeImages/main/image2.jpeg)`,
     height: '100vh',
     margin:'0',
     backgroundPosition: 'center',

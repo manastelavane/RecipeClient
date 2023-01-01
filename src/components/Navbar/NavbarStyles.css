@@ -38,11 +38,6 @@
     cursor: pointer;
 }
 
-.fa-react{
-    margin-left: 0.2rem;    
-    font-size: 1.6rem;
-
-}
 .nav-menu{
     display: grid;
     grid-template-columns: repeat(6,auto);
@@ -58,16 +53,23 @@
     padding: 0.7rem 1rem;
     white-space: nowrap;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.nav-links i{
-    padding-right: 10px;
 
-}
 .nav-links:hover{
     background: white;
     color: black;
     border-radius: 20px;
     transition: all 0.1s ease-in-out;
+}
+.nav-links span{
+    display: flex;
+    align-items: flex-end;
+    font-size: 25px;
+    /* padding: 0 !important;
+    margin: 0!important; */
 }
 .fa-bars,.fa-times{
     color: #fff;
@@ -97,6 +99,7 @@
     background-color: #1bc98e;
     color: white;
 }
+
 .scrolling .nav-links-mobile:hover{
     background-color: #05a46f;
     color: white;
@@ -166,6 +169,14 @@
     .nav-links:hover{
         background: rgba(255,255,255,0.25);
         backdrop-filter: blur(20px);
+    }
+    .nav-links span{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .scrolling .fas{
+        color: black!important;   
     }
     .menu-icons{
         display: block;

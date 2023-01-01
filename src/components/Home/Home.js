@@ -27,7 +27,7 @@ const Home = () => {
 
   const query = useQuery();
   const ref = React.createRef();
-  const page = query.get('page') || 1;
+  let page = query.get('page') || 1;
   const location=useLocation();
 
   const {isLoading,cards,numberOfPages} = useSelector((state) => state.cards);
@@ -38,36 +38,53 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const navigate=useNavigate()
-  useEffect(() => {
+  useEffect(()=>{
+    page=1
+  },[category])
+  useEffect(()=>{
     if(location.pathname==='/'){
       navigate(`/card?category=All&page=1`);
     }else{
-      dispatch(getCards(category,1))
-      navigate(`/card?category=${category}&page=1`);
-      if(page==="1" && category==="All"){
-        window.scrollTo(0, 0)
-      }else{
-        // console.log("scroll")
-        window.scrollTo(0, 500)
-      }
-    }
-      
-  }, [dispatch,category,navigate]);
-  useEffect(() => {
-    if(location.pathname==='/'){
-      navigate(`/card?category=All&page=1`);
-    }else{
-      // console.log("page")
-      if(page==="1" && category==="All"){
-        window.scrollTo(0, 0)
-      }else{
-        // console.log("scroll")
-        window.scrollTo(0, 500)
-      }
       dispatch(getCards(category,page))
       navigate(`/card?category=${category}&page=${page}`);
+      if(page==="1" && category==="All"){
+              window.scrollTo(0, 0)
+            }else{
+              // console.log("scroll")
+              window.scrollTo(0, 500)
+            }
     }
-  }, [dispatch,page,navigate]);
+  },[dispatch,page,category])
+  // useEffect(() => {
+  //   if(location.pathname==='/'){
+  //     navigate(`/card?category=All&page=1`);
+  //   }else{
+  //     dispatch(getCards(category,1))
+  //     navigate(`/card?category=${category}&page=1`);
+  //     if(page==="1" && category==="All"){
+  //       window.scrollTo(0, 0)
+  //     }else{
+  //       // console.log("scroll")
+  //       window.scrollTo(0, 500)
+  //     }
+  //   }
+      
+  // }, [dispatch,category,navigate]);
+  // useEffect(() => {
+  //   if(location.pathname==='/'){
+  //     navigate(`/card?category=All&page=1`);
+  //   }else{
+  //     // console.log("page")
+  //     if(page==="1" && category==="All"){
+  //       window.scrollTo(0, 0)
+  //     }else{
+  //       // console.log("scroll")
+  //       window.scrollTo(0, 500)
+  //     }
+  //     dispatch(getCards(category,page))
+  //     navigate(`/card?category=${category}&page=${page}`);
+  //   }
+  // }, [dispatch,page,navigate]);
   if(isLoading || loading){
     return(
       <>
