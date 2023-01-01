@@ -72,7 +72,7 @@ const Profile = () => {
         <div className='back' title="Back" onClick={()=>navigate('/')}>
         <IoArrowBackSharp/> 
         </div>
-        <h1 style={{textShadow:'0.5px 0.5px black'}}>My Profile</h1>
+        <h1 className="h1" style={{textShadow:'0.5px 0.5px black'}}>My Profile</h1>
         <div>
         <div className="profileContainer">
           <div>

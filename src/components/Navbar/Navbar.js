@@ -17,8 +17,10 @@ const Navbar = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const classes = useStyles();
-    
+    // console.log("hi")
     useEffect(()=>{
+        // console.log("hi")
+        
         if(user && user.result){
             dispatch({ type: actionType.AUTH, data:user });
         }

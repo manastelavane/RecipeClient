@@ -9,7 +9,7 @@ const Ingredients = ({card}) => {
     <div>
       <div className='quantity'>
         Quantity : &nbsp;
-        <TextField name="quantity" type="number" variant="outlined" color='primary'  value={quantity} onChange={(e) => setQuantity( e.target.value )} />
+        <TextField name="quantity" type="number" variant="outlined" color='primary'  value={quantity} onChange={(e) => setQuantity( e.target.value )} inputProps={{ min: "0", max: "10000000", step: "1" }}/>
         &nbsp; &nbsp;{card?.RecipeYield!=='NaN'?card?.RecipeYield.substr(card?.RecipeYield.indexOf(' ')+1):'people'}
       </div>
       <div className='ingredients'>

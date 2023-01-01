@@ -23,15 +23,16 @@ const New = () => {
     useEffect(()=>{
         dispatch(getNewCards(page))
         navigate(`/new?page=${page}`);
-        if(page!==1){
-          window.scrollTo(0, 300)
-        }else{
+        console.log(page,typeof(page))
+
+        if(page==="1"){
+          // console.log("hi")
           window.scrollTo(0, 0)
+        }else{
+          // console.log("bye")
+          window.scrollTo(0, 400)
         }
     },[dispatch,navigate,page])
-    useEffect(() => {
-      window.scrollTo(0, 0)
-    }, [])
   return (
     <div>
       {isLoading?(<Loader/>):(

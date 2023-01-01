@@ -335,6 +335,9 @@ li{
     align-items: center;    
   }
   @media screen and (max-width:1000px) {
+    .recipe-image{
+      border-radius: 0px !important;
+    }
     .main-content {
       position:static;
       padding:0;
@@ -396,6 +399,7 @@ li{
 
 }
 @media screen and (max-width:500px) {
+  
   .li-nutrients {
     font-size: 15px;
   }

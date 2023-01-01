@@ -7,12 +7,12 @@
     font-size:11px;
     /* margin: 20px; */
     font-weight: 900;
-    justify-content: center;
-    align-items: center;
     /* position: fixed; */
     background: white;
     z-index: 1;
     padding: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .spinner {

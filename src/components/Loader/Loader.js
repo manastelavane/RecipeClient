@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import './Loader.css'
 import { LoaderQuotes } from './LoaderQuotes'
 const Loader = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+  // useEffect(()=>{
+  //   window.scrollTo(0,0)
+  // },[])
   return (
     <div className="loader-container">
       	  <div className="spinner"></div>

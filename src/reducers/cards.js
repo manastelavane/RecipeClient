@@ -30,7 +30,7 @@ export const cards=(state = {isLoading:false,isRecomendLoading:true,cards:[],rec
       return { ...state, recommend: action.data,isRecomendLoading:false };
 
     case CREATE:
-        console.log("created",action.data)
+        // console.log("created",action.data)
         return {...state,isLoading: false}
     case NEW_COMMENT_REQUEST:
         return {
@@ -38,7 +38,7 @@ export const cards=(state = {isLoading:false,isRecomendLoading:true,cards:[],rec
             loading: true,
         };
         case NEW_COMMENT_SUCCESS:
-          console.log(action.payload)
+          // console.log(action.payload)
           return {
             ...state,
             loading: false,
