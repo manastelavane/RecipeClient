@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState,useEffect,useRef} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { Link, useNavigate,useLocation } from 'react-router-dom';
 // import { GoogleLogin } from '@react-oauth/google';
@@ -27,64 +27,50 @@ const Home = () => {
 
   const query = useQuery();
   const ref = React.createRef();
-  let page = query.get('page') || 1;
+  let page = query.get('page') || "1";
   const location=useLocation();
 
   const {isLoading,cards,numberOfPages} = useSelector((state) => state.cards);
-  const {loading,isAuthenticated} = useSelector((state) => state.auth);
+  const {loading} = useSelector((state) => state.auth);
 
   const [inputValue, setInputValue] = useState(options[0]);
   const [category, setCategory] = useState('All');
-
+  const previousPage = useRef(page);
+  const previousCategory = useRef(category);
   const dispatch = useDispatch();
   const navigate=useNavigate()
   useEffect(()=>{
-    page=1
-  },[category])
-  useEffect(()=>{
     if(location.pathname==='/'){
-      navigate(`/card?category=All&page=1`);
-    }else{
-      dispatch(getCards(category,page))
-      navigate(`/card?category=${category}&page=${page}`);
-      if(page==="1" && category==="All"){
-              window.scrollTo(0, 0)
-            }else{
-              // console.log("scroll")
-              window.scrollTo(0, 500)
-            }
+        navigate(`/card?category=All&page=1`);
+        dispatch(getCards(category,page));
+        previousPage.current = page;
+        previousCategory.current = category;
     }
-  },[dispatch,page,category])
-  // useEffect(() => {
-  //   if(location.pathname==='/'){
-  //     navigate(`/card?category=All&page=1`);
-  //   }else{
-  //     dispatch(getCards(category,1))
-  //     navigate(`/card?category=${category}&page=1`);
-  //     if(page==="1" && category==="All"){
-  //       window.scrollTo(0, 0)
-  //     }else{
-  //       // console.log("scroll")
-  //       window.scrollTo(0, 500)
-  //     }
-  //   }
+    else if(previousCategory.current !== category) {
+      previousPage.current="1";
+      navigate(`/card?category=${category}&page=1`);
+      dispatch(getCards(category,page))
+        if(page==="1" && category==="All"){
+                window.scrollTo(0, 0)
+              }else{
+                window.scrollTo(0, 500)
+              }
+              previousPage.current = "1";
+      previousCategory.current = category;
+      }else if(previousPage.current !== page) {
+        navigate(`/card?category=${category}&page=${page}`);
+        dispatch(getCards(category,page))
+        if(page==="1" && category==="All"){
+                window.scrollTo(0, 0)
+              }else{
+                window.scrollTo(0, 500)
+              }
+              previousPage.current = page;
+      previousCategory.current = category;
+    }
       
-  // }, [dispatch,category,navigate]);
-  // useEffect(() => {
-  //   if(location.pathname==='/'){
-  //     navigate(`/card?category=All&page=1`);
-  //   }else{
-  //     // console.log("page")
-  //     if(page==="1" && category==="All"){
-  //       window.scrollTo(0, 0)
-  //     }else{
-  //       // console.log("scroll")
-  //       window.scrollTo(0, 500)
-  //     }
-  //     dispatch(getCards(category,page))
-  //     navigate(`/card?category=${category}&page=${page}`);
-  //   }
-  // }, [dispatch,page,navigate]);
+  },[dispatch,page,category,navigate,location.pathname])
+ 
   if(isLoading || loading){
     return(
       <>

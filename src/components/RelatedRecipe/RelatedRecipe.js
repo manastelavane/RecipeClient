@@ -11,7 +11,7 @@ function useQuery() {
 }
 
 const RelatedRecipe = () => {
-  const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user] = useState(JSON.parse(localStorage.getItem('profile')));
   const navigate=useNavigate()
     const query=useQuery()
     const dispatch=useDispatch()
@@ -23,7 +23,8 @@ const RelatedRecipe = () => {
       }, [navigate, user]);
     useEffect(()=>{
         dispatch(getRelatedCards(query.get('query')));
-    },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[dispatch])
     if(isLoading){
         return(
             <>

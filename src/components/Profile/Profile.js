@@ -41,7 +41,7 @@ const Profile = () => {
   },[authData])
   useEffect(()=>{
     navigate('/profile')
-  },[user])
+  },[user,navigate])
   useEffect(() => {
     if (!user) {
       navigate('/auth');
@@ -96,6 +96,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="bordercontainer">
+        {/* eslint-disable-next-line jsx-a11y/heading-has-content */}
         <h1 className="border"></h1>
       </div>
       <br/>

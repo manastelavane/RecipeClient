@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://raw.githubusercontent.com/manastelavane/RecipeImages/main/fingerchips-big.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../Images/fingerchips-big.webp");
     height: 62vh;
     background-position: center;
     background-repeat: no-repeat;

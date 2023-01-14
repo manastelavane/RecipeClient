@@ -6,12 +6,10 @@ import { SIGNUP_FAIL } from '../../constants/actionTypes';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {Alert} from '@mui/material'
-import { useAlert } from "react-alert";
 
-import { signin, signup,googlesignin,clearErrors } from '../../actions/auth';
+import { signin, signup,googlesignin} from '../../actions/auth';
 import useStyles from './AuthStyles';
 import FileBase from 'react-file-base64';
-import Icon from './icon';
 import Input from './Input';
 
 import {IoArrowBackSharp} from 'react-icons/io5'
@@ -68,7 +66,7 @@ const SignUp = () => {
       navigate(-1)
     }
     window.scrollTo(0, 0)
-  },[dispatch,isAuthenticated,alert])
+  },[dispatch,isAuthenticated,navigate])
   if(loading){
     return (
       <>

@@ -6,20 +6,19 @@ import SendMessage from './send-message';
 
 import { IoArrowBackSharp } from "react-icons/io5";
 import styles from './styles.module.css';
-import RoomAndUsers from './room-and-user';
 
 const Chat = ({ room, socket }) => {
-  const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user] = useState(JSON.parse(localStorage.getItem('profile')));
   const username=user?.result?.name;
   const navigate=useNavigate()
     useEffect(()=>{
       if(!user){
         navigate('/auth')
       }
-    },[user])
+    },[user,navigate])
     useEffect(()=>{
         socket.emit('join_room', { username, room });
-    },[])
+    },[room,username,socket])
     useEffect(() => {
       window.scrollTo(0, 0)
     }, [])

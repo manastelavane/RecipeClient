@@ -35,7 +35,7 @@ const Recipe = () => {
     if(!user){
       navigate('/auth')
     }
-  },[user])
+  },[user,navigate])
   useEffect(() => {
     dispatch(getCard(id));
   }, [id,dispatch]);

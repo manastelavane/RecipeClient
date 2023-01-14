@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 const Navbar = () => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [user] = useState(JSON.parse(localStorage.getItem('profile')));
     const [clicked,setClicked]=useState(false);
     const [scrolling,setScrolling]=useState(false)
     const dispatch=useDispatch();
@@ -28,7 +28,7 @@ const Navbar = () => {
         if(user && user.result){
             dispatch({ type: actionType.AUTH, data:user });
         }
-    },[user])
+    },[dispatch,user])
 
     const handleClick=()=>{
         setClicked(!clicked)

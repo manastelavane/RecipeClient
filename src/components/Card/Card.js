@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Rating,CardActionArea,Typography,CardMedia,CardContent,Card } from '@mui/material';
+import { Rating,CardActionArea,Typography,CardContent,Card } from '@mui/material';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import {BiTimer} from 'react-icons/bi'

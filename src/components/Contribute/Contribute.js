@@ -21,7 +21,7 @@ ProteinContent:'',FatContent:'',SaturatedFatContent:'',Calories:'',SugarContent:
 FiberContent:'',SodiumContent:'',RecipeServings:'',Keywords:[],RecipeIngredientQuantities:[''],RecipeIngredientParts:[''],RecipeInstructions:['']};
 
 const Contribute = () => {
-  const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user] = useState(JSON.parse(localStorage.getItem('profile')));
   const {isLoading}=useSelector((state) => state.cards)
   const [form, setForm] = useState(initialState);
   const dispatch=useDispatch()
@@ -30,7 +30,7 @@ const Contribute = () => {
     if(!user){
       navigate('/auth')
     }
-  },[user])
+  },[user,navigate])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const handleAddChip = (tag) => {

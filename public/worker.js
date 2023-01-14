@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 var CACHE_NAME = 'pwa-cookwell';
 var urlsToCache = [
   '/',
@@ -44,6 +45,7 @@ self.addEventListener('activate', event => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
+          return null;
         })
       );
     })

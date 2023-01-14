@@ -1,4 +1,4 @@
-import React, { Fragment,useState } from 'react';
+import React from 'react';
 import { Routes, Route} from 'react-router-dom';
 
 import Home from './components/Home/Home';
@@ -15,10 +15,9 @@ import './App.css'
 
 import io from 'socket.io-client';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { useSelector } from 'react-redux';
 
 
-const socket = io.connect('https://recipechatserver.onrender.com/'); 
+const socket = io.connect('http://localhost:4000'); 
 // const socket = io.connect('https://recipechatserver.onrender.com/'); 
 
 const App = () => {
