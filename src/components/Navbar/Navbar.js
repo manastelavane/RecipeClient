@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
 import './NavbarStyles.css'
+import logo from '../../Images/Websitelogo.avif'
 
 import {  Typography, Toolbar, Avatar, Button, makeStyles } from '@material-ui/core';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
@@ -56,7 +57,7 @@ const Navbar = () => {
       <nav className={scrolling?"NavbarItems scrolling":"NavbarItems"}>
         <Link to='/' className='text-decoration-none'>
             <h1 className='logo' >
-                <img src="https://raw.githubusercontent.com/manastelavane/RecipeImages/main/Websitelogo.jpeg" height="50px" width="50px" alt='cookwell'/>
+                <img src={logo} height="50px" width="50px" alt='cookwell'/>
                 COOKWELL 
             </h1>
         </Link>

@@ -15,7 +15,7 @@ import OneTap from './OneTap';
 
 import { Pagination, PaginationItem } from '@material-ui/lab';
 import {TextField,Autocomplete} from '@mui/material';
-import {AiFillCaretDown} from 'react-icons/ai'
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -40,13 +40,16 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate()
   useEffect(()=>{
-    if(location.pathname==='/'){
+    console.log(category,page)
+    if(location.pathname==='/' || (category==="All" && page==="1" )){
+      console.log("if")
         navigate(`/card?category=All&page=1`);
         dispatch(getCards(category,page));
         previousPage.current = page;
         previousCategory.current = category;
     }
     else if(previousCategory.current !== category) {
+      console.log("cate")
       previousPage.current="1";
       navigate(`/card?category=${category}&page=1`);
       dispatch(getCards(category,page))
@@ -58,6 +61,7 @@ const Home = () => {
               previousPage.current = "1";
       previousCategory.current = category;
       }else if(previousPage.current !== page) {
+      console.log("page")
         navigate(`/card?category=${category}&page=${page}`);
         dispatch(getCards(category,page))
         if(page==="1" && category==="All"){
@@ -97,7 +101,7 @@ const Home = () => {
               <span onClick={()=>setCategory('Chicken')}>Chicken</span>
             </div>
             <a href="#containerscroll"><div className='scrolldiv'>
-            <button className='scroll-button'>Scroll &nbsp;<AiFillCaretDown/></button>
+            <button className='scroll-button'><ArrowCircleDownIcon/></button>
             </div></a>
           </div>
         </div>
