@@ -180,7 +180,7 @@
   .pagination{
     display: flex;
     justify-content: center;
-    margin: 40px;
+    margin: 40px 0;
   }
   .pagination-ul{
     justify-content: space-around;

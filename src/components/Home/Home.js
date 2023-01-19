@@ -1,85 +1,30 @@
-import React ,{useState,useEffect,useRef} from 'react'
-import { useDispatch,useSelector } from 'react-redux'
-import { Link, useNavigate,useLocation } from 'react-router-dom';
-// import { GoogleLogin } from '@react-oauth/google';
+import React ,{useState} from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom';
 
-import { getCards } from '../../actions/cards'
 import Autocompletee from './Autocomplete/Autocomplete';
-import ActionAreaCard from '../Card/Card'
-import LoaderSmall from '../Loader/LoaderSmall';
 import Navbar from '../Navbar/Navbar'
-import { options } from '../options';
 import './HomeStyles.css'
 import Loader from '../Loader/Loader';
 import OneTap from './OneTap';
 
-import { Pagination, PaginationItem } from '@material-ui/lab';
-import {TextField,Autocomplete} from '@mui/material';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import HomeRecipes from './HomeRecipes';
 
 const Home = () => {
   const user=JSON.parse(localStorage.getItem('profile'));
-  // console.log("user",user)
-
-  const query = useQuery();
-  const ref = React.createRef();
-  let page = query.get('page') || "1";
-  const location=useLocation();
-
-  const {isLoading,cards,numberOfPages} = useSelector((state) => state.cards);
   const {loading} = useSelector((state) => state.auth);
-
-  const [inputValue, setInputValue] = useState(options[0]);
-  const [category, setCategory] = useState('All');
-  const previousPage = useRef(page);
-  const previousCategory = useRef(category);
-  const dispatch = useDispatch();
-  const navigate=useNavigate()
-  useEffect(()=>{
-    console.log(category,page)
-    if(location.pathname==='/' || (category==="All" && page==="1" )){
-      console.log("if")
-        navigate(`/card?category=All&page=1`);
-        dispatch(getCards(category,page));
-        previousPage.current = page;
-        previousCategory.current = category;
-    }
-    else if(previousCategory.current !== category) {
-      console.log("cate")
-      previousPage.current="1";
-      navigate(`/card?category=${category}&page=1`);
-      dispatch(getCards(category,page))
-        if(page==="1" && category==="All"){
-                window.scrollTo(0, 0)
-              }else{
-                window.scrollTo(0, 500)
-              }
-              previousPage.current = "1";
-      previousCategory.current = category;
-      }else if(previousPage.current !== page) {
-      console.log("page")
-        navigate(`/card?category=${category}&page=${page}`);
-        dispatch(getCards(category,page))
-        if(page==="1" && category==="All"){
-                window.scrollTo(0, 0)
-              }else{
-                window.scrollTo(0, 500)
-              }
-              previousPage.current = page;
-      previousCategory.current = category;
-    }
-      
-  },[dispatch,page,category,navigate,location.pathname])
- 
-  if(isLoading || loading){
+  const [category1, setCategory1] = useState('All');
+  const [update, setUpdate] = useState(false);
+  const handleButtonClick = (value) => {
+    setCategory1(value);
+    setUpdate(!update);
+  }
+  if(loading ){
     return(
-      <>
+      <div style={{display:'flex', justifyContent:'center'}}>
         <Loader/>
-      </>
+      </div>
     )
   }
   return (
@@ -95,58 +40,18 @@ const Home = () => {
             <br/>
             <h6 style={{textShadow:"2px 1px black",textAlign:"center"}}>Can't think of any Recipe? <span className='lightfont'>Try out this Popular tags.</span></h6>
             <div className="tags">
-              {/* <span onClick={()=>setCategory('Dessert')}>Dessert</span> */}
-              <span onClick={()=>setCategory('Lunch/Snacks')}>Lunch/Snacks</span>
-              <span onClick={()=>setCategory('< 60 Mins')}>Quick & Easy</span>
-              <span onClick={()=>setCategory('Chicken')}>Chicken</span>
+              <span onClick={() => handleButtonClick('Dessert')}>Dessert</span>
+              <span onClick={() => handleButtonClick('Lunch/Snacks')}>Lunch/Snacks</span>
+              <span onClick={() => handleButtonClick('< 60 Mins')}>Quick & Easy</span>
+              <span onClick={() => handleButtonClick('Chicken')}>Chicken</span>
             </div>
             <a href="#containerscroll"><div className='scrolldiv'>
-            <button className='scroll-button'><ArrowCircleDownIcon/></button>
+            <button className='scroll-button' title='scroll'><ArrowCircleDownIcon/></button>
             </div></a>
           </div>
         </div>
-          <div id='containerscroll' ref={ref}></div>
         <br/>
-        <div className="autocomplete-div" >
-          <Autocomplete
-            
-            className='autocomplete'
-            value={category}
-            onChange={(event, newCategory) => {
-              setCategory(newCategory);
-            }}
-            inputValue={inputValue}
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            id="disable-clearable"
-            disableClearable
-            options={options}
-            sx={{ width: 500 }}
-            renderInput={(params) => <TextField {...params} value='All' label="Select Category" />}
-          />
-        </div>
-        <div className='card-container'>
-          {isLoading?(<LoaderSmall/>):(<>{cards &&
-            cards.map((card) => (
-              <ActionAreaCard card={card} key={card._id} />
-            ))
-            }</>)
-          }
-        </div>
-        <div className='pagination'>
-          <Pagination
-            className="pagination-ul"
-            count={numberOfPages}
-            page={Number(page) || 1}
-            variant="outlined"
-            size='small'
-            color="primary"
-            renderItem={(item) => (
-              <PaginationItem {...item} component={Link} to={`/card?category=${category}&page=${item.page}`} />
-            )}
-          />
-        </div>
+        <HomeRecipes category1={category1} setCategory1={setCategory1}/>
       </div>
     </>
   )
